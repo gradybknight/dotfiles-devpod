@@ -17,29 +17,29 @@ export EDITOR=nvim
 export TERM=screen-256color
 
 # config
-export BROWSER="firefox"
+# export BROWSER="firefox"
 
 # directories
-export REPOS="$HOME/Repos"
-export GITUSER="mischavandenburg"
-export GHREPOS="$REPOS/github.com/$GITUSER"
-export DOTFILES="$GHREPOS/dotfiles"
-export LAB="$GHREPOS/lab"
+# export REPOS="$HOME/Repos"
+# export GITUSER="mischavandenburg"
+# export GHREPOS="$REPOS/github.com/$GITUSER"
+# export DOTFILES="$GHREPOS/dotfiles"
+# export LAB="$GHREPOS/lab"
 export SCRIPTS="$DOTFILES/scripts"
-export ICLOUD="$HOME/icloud"
-export SECOND_BRAIN="$HOME/garden"
+# export ICLOUD="$HOME/icloud"
+# export SECOND_BRAIN="$HOME/garden"
 
 # Go related. In general all executables and scripts go in .local/bin
-export GOBIN="$HOME/.local/bin"
-export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
-# export GOPATH="$HOME/.local/share/go"
-export GOPATH="$HOME/go/"
+# export GOBIN="$HOME/.local/bin"
+# export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
+# # export GOPATH="$HOME/.local/share/go"
+# export GOPATH="$HOME/go/"
 
 # dotnet
-export DOTNET_ROOT="$HOME/dotnet"
+# export DOTNET_ROOT="$HOME/dotnet"
 
 # get rid of mail notifications on MacOS
-unset MAILCHECK
+# unset MAILCHECK
 
 # ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -58,26 +58,26 @@ export HISTCONTROL=ignorespace
 
 # This function is stolen from rwxrob
 
-clone() {
-	local repo="$1" user
-	local repo="${repo#https://github.com/}"
-	local repo="${repo#git@github.com:}"
-	if [[ $repo =~ / ]]; then
-		user="${repo%%/*}"
-	else
-		user="$GITUSER"
-		[[ -z "$user" ]] && user="$USER"
-	fi
-	local name="${repo##*/}"
-	local userd="$REPOS/github.com/$user"
-	local path="$userd/$name"
-	[[ -d "$path" ]] && cd "$path" && return
-	mkdir -p "$userd"
-	cd "$userd"
-	echo gh repo clone "$user/$name" -- --recurse-submodule
-	gh repo clone "$user/$name" -- --recurse-submodule
-	cd "$name"
-} && export -f clone
+# clone() {
+# 	local repo="$1" user
+# 	local repo="${repo#https://github.com/}"
+# 	local repo="${repo#git@github.com:}"
+# 	if [[ $repo =~ / ]]; then
+# 		user="${repo%%/*}"
+# 	else
+# 		user="$GITUSER"
+# 		[[ -z "$user" ]] && user="$USER"
+# 	fi
+# 	local name="${repo##*/}"
+# 	local userd="$REPOS/github.com/$user"
+# 	local path="$userd/$name"
+# 	[[ -d "$path" ]] && cd "$path" && return
+# 	mkdir -p "$userd"
+# 	cd "$userd"
+# 	echo gh repo clone "$user/$name" -- --recurse-submodule
+# 	gh repo clone "$user/$name" -- --recurse-submodule
+# 	cd "$name"
+# } && export -f clone
 
 # ~~~~~~~~~~~~~~~ SSH ~~~~~~~~~~~~~~~~~~~~~~~~
 # SSH Script from arch wiki
@@ -100,9 +100,9 @@ fi
 # ssh-add -q ~/.ssh/mischa
 # ssh-add -q ~/.ssh/mburg
 #{
-ssh-add -q ~/.ssh/id_ed25519
-ssh-add -q ~/.ssh/vanoord
-ssh-add -q ~/.ssh/delegate
+# ssh-add -q ~/.ssh/id_ed25519
+# ssh-add -q ~/.ssh/vanoord
+# ssh-add -q ~/.ssh/delegate
 #} &>/dev/null
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -117,38 +117,38 @@ alias v=nvim
 # alias vim=nvim
 
 # cd
-alias vo='cd $REPOS/github.com/VanOord/'
+# alias vo='cd $REPOS/github.com/VanOord/'
 alias ..="cd .."
 alias scripts='cd $SCRIPTS'
-alias cdblog="cd ~/websites/blog"
-alias cdpblog='cd $SECOND_BRAIN/2-areas/blog/content'
+# alias cdblog="cd ~/websites/blog"
+# alias cdpblog='cd $SECOND_BRAIN/2-areas/blog/content'
 
 # Repos
 
-alias lab='cd $LAB'
-alias cks='cd $LAB/kubernetes/cks/'
-alias alab='cd $GHREPOS/azure-lab'
-alias dot='cd $GHREPOS/dotfiles'
-alias zk='cd $GHREPOS/zettelkasten'
-alias repos='cd $REPOS'
-alias ghrepos='cd $GHREPOS'
-alias cdgo='cd $GHREPOS/go/'
-alias ex='cd $REPOS/github.com/mischavandenburg/go/Exercism/'
-alias rwdot='cd $REPOS/github.com/rwxrob/dot'
-
-alias avm='cd $REPOS/github.com/Azure/bicep-registry-modules'
-alias d='cd $REPOS/delegate'
+# alias lab='cd $LAB'
+# alias cks='cd $LAB/kubernetes/cks/'
+# alias alab='cd $GHREPOS/azure-lab'
+# alias dot='cd $GHREPOS/dotfiles'
+# alias zk='cd $GHREPOS/zettelkasten'
+# alias repos='cd $REPOS'
+# alias ghrepos='cd $GHREPOS'
+# alias cdgo='cd $GHREPOS/go/'
+# alias ex='cd $REPOS/github.com/mischavandenburg/go/Exercism/'
+# alias rwdot='cd $REPOS/github.com/rwxrob/dot'
+#
+# alias avm='cd $REPOS/github.com/Azure/bicep-registry-modules'
+# alias d='cd $REPOS/delegate'
 
 alias c="clear"
-alias icloud="cd \$ICLOUD"
-alias rob='cd $REPOS/github.com/rwxrob'
-alias homelab='cd $REPOS/github.com/mischavandenburg/homelab/'
-alias hl='homelab'
-alias hlp='cd $REPOS/github.com/mischavandenburg/homelab-private/'
-alias hlps='cd $REPOS/github.com/mischavandenburg/homelab-private-staging/'
-alias hlpp='cd $REPOS/github.com/mischavandenburg/homelab-private-production/'
-alias skool='cd $REPOS/github.com/mischavandenburg/skool/kubernetes-fundamentals'
-alias cdq='cd $REPOS/github.com/jackyzha0/quartz'
+# alias icloud="cd \$ICLOUD"
+# alias rob='cd $REPOS/github.com/rwxrob'
+# alias homelab='cd $REPOS/github.com/mischavandenburg/homelab/'
+# alias hl='homelab'
+# alias hlp='cd $REPOS/github.com/mischavandenburg/homelab-private/'
+# alias hlps='cd $REPOS/github.com/mischavandenburg/homelab-private-staging/'
+# alias hlpp='cd $REPOS/github.com/mischavandenburg/homelab-private-production/'
+# alias skool='cd $REPOS/github.com/mischavandenburg/skool/kubernetes-fundamentals'
+# alias cdq='cd $REPOS/github.com/jackyzha0/quartz'
 
 # ls
 alias ls='ls --color=auto'
@@ -166,23 +166,23 @@ alias syu='sudo pacman -Syu'
 
 # Azure
 
-alias sub='az account set -s'
-
-# dotnet
-alias dr='dotnet run'
-
-# bash parameter completion for the dotnet CLI
-
-function _dotnet_bash_complete() {
-	local cur="${COMP_WORDS[COMP_CWORD]}" IFS=$'\n' # On Windows you may need to use use IFS=$'\r\n'
-	local candidates
-
-	read -d '' -ra candidates < <(dotnet complete --position "${COMP_POINT}" "${COMP_LINE}" 2>/dev/null)
-
-	read -d '' -ra COMPREPLY < <(compgen -W "${candidates[*]:-}" -- "$cur")
-}
-
-complete -f -F _dotnet_bash_complete dotnet
+# alias sub='az account set -s'
+#
+# # dotnet
+# alias dr='dotnet run'
+#
+# # bash parameter completion for the dotnet CLI
+#
+# function _dotnet_bash_complete() {
+# 	local cur="${COMP_WORDS[COMP_CWORD]}" IFS=$'\n' # On Windows you may need to use use IFS=$'\r\n'
+# 	local candidates
+#
+# 	read -d '' -ra candidates < <(dotnet complete --position "${COMP_POINT}" "${COMP_LINE}" 2>/dev/null)
+#
+# 	read -d '' -ra COMPREPLY < <(compgen -W "${candidates[*]:-}" -- "$cur")
+# }
+#
+# complete -f -F _dotnet_bash_complete dotnet
 
 # git
 alias gp='git pull'
@@ -199,40 +199,40 @@ alias sbr='source ~/.bashrc'
 alias s='startx'
 
 # vim & second brain
-alias sb="cd \$SECOND_BRAIN"
-alias in="cd \$SECOND_BRAIN/0 Inbox/"
-alias vbn='python ~/git/python/brainfile.py'
+# alias sb="cd \$SECOND_BRAIN"
+# alias in="cd \$SECOND_BRAIN/0 Inbox/"
+# alias vbn='python ~/git/python/brainfile.py'
 
 # starting programmes
-alias cards='python3 /opt/homebrew/lib/python3.11/site-packages/mtg_proxy_printer/'
-
-# terraform
-alias tf='terraform'
-alias tp='terraform plan'
-
+# alias cards='python3 /opt/homebrew/lib/python3.11/site-packages/mtg_proxy_printer/'
+#
+# # terraform
+# alias tf='terraform'
+# alias tp='terraform plan'
+#
 # fun
 alias fishies=asciiquarium
 
 # kubectl
-alias k='kubectl'
-source <(kubectl completion bash)
-complete -o default -F __start_kubectl k
-alias kgp='kubectl get pods'
-alias kc='kubectx'
-alias kn='kubens'
-
-alias kcs='kubectl config use-context admin@homelab-staging'
-alias kcp='kubectl config use-context admin@homelab-production'
-
-# flux
-source <(flux completion bash)
-alias fgk='flux get kustomizations'
-
-# completions
-source <(talosctl completion bash)
-source <(kubectl-cnp completion bash)
-source <(cilium completion bash)
-source <(devpod completion bash)
+# alias k='kubectl'
+# source <(kubectl completion bash)
+# complete -o default -F __start_kubectl k
+# alias kgp='kubectl get pods'
+# alias kc='kubectx'
+# alias kn='kubens'
+#
+# alias kcs='kubectl config use-context admin@homelab-staging'
+# alias kcp='kubectl config use-context admin@homelab-production'
+#
+# # flux
+# source <(flux completion bash)
+# alias fgk='flux get kustomizations'
+#
+# # completions
+# source <(talosctl completion bash)
+# source <(kubectl-cnp completion bash)
+# source <(cilium completion bash)
+# source <(devpod completion bash)
 
 # fzf aliases
 # use fp to do a fzf search and preview the files
