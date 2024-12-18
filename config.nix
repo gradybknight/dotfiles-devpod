@@ -1,7 +1,7 @@
 {
   packageOverrides = pkgs: with pkgs; {
     myPackages = pkgs.buildEnv {
-      name = "mischa-tools";
+      name = "grady-tools";
       paths = [
         zsh-completions
         neovim
